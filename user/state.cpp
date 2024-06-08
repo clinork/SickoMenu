@@ -45,6 +45,7 @@ void Settings::Load() {
         JSON_TRYGET("KeybindsWhileChatting", this->KeybindsWhileChatting);
         JSON_TRYGET("SpoofLevel", this->SpoofLevel);
         JSON_TRYGET("FakeLevel", this->FakeLevel);
+        JSON_TRYGET("KickLevel", this->KickLevel);
         JSON_TRYGET("SpoofFriendCode", this->SpoofFriendCode);
         JSON_TRYGET("UseGuestFriendCode", this->UseGuestFriendCode);
         JSON_TRYGET("GuestFriendCode", this->GuestFriendCode);
@@ -60,6 +61,7 @@ void Settings::Load() {
         JSON_TRYGET("CycleBetweenPlayers", this->CycleBetweenPlayers);
         JSON_TRYGET("CycleInMeeting", this->CycleInMeeting);
         JSON_TRYGET("CycleTimer", this->CycleTimer);
+        JSON_TRYGET("AutoKick", this->AutoKick);
         JSON_TRYGET("CyclerUserNames", this->cyclerUserNames);
         JSON_TRYGET("HostUsername", this->hostUserName);
         JSON_TRYGET("ChatMessage", this->chatMessage);
@@ -227,6 +229,7 @@ void Settings::Save() {
             { "KeybindsWhileChatting", this->KeybindsWhileChatting },
             { "SpoofLevel", this->SpoofLevel },
             { "FakeLevel", this->FakeLevel },
+            { "KickLevel", this->KickLevel },
             { "SpoofFriendCode", this->SpoofFriendCode },
             { "UseGuestFriendCode", this->UseGuestFriendCode },
             { "GuestFriendCode", this->GuestFriendCode },

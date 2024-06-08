@@ -158,6 +158,21 @@ void dPlayerControl_FixedUpdate(PlayerControl* __this, MethodInfo* method) {
 					roleColor.a, playerName);
 			}
 
+			static int levelKickBufferTime = 100;
+			uint32_t playerLevel = playerData->fields.PlayerLevel + 1;
+			uint8_t playerId = GetPlayerControlById(playerData->fields.PlayerId)->fields._.OwnerId;
+			ClientData* host = InnerNetClient_GetHost((InnerNetClient*)(*Game::pAmongUsClient), NULL);
+
+			if (IsInLobby() && IsHost() && State.AutoKick && State.KickLevel != 0 && (playerLevel != 0 && playerLevel < State.KickLevel))
+			{
+				levelKickBufferTime--;
+				if (levelKickBufferTime <= 0)
+				{
+					levelKickBufferTime = 100;
+					app::InnerNetClient_KickPlayer((InnerNetClient*)(*Game::pAmongUsClient), GetPlayerControlById(playerData->fields.PlayerId)->fields._.OwnerId, true, NULL);
+				}
+			}
+
 			if (State.ShowPlayerInfo && IsInLobby() && !State.PanicMode)
 			{
 				uint32_t playerLevel = playerData->fields.PlayerLevel + 1;

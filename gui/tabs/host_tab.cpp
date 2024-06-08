@@ -122,6 +122,15 @@ namespace HostTab {
 			{
 				app::InnerNetClient_SendStartGame((InnerNetClient*)(*Game::pAmongUsClient), NULL);
 			}
+
+			if (ToggleButton("Kick low level", &State.AutoKick))
+				State.Save();
+			int levelkoo = State.KickLevel;
+			if (ImGui::InputInt("Auto level kick", &levelkoo)) {
+				State.KickLevel = (uint8_t)levelkoo;
+				State.Save();
+			}
+
 			if (ToggleButton("Disable Meetings", &State.DisableMeetings))
 				State.Save();
 			if (ToggleButton("Disable Sabotages", &State.DisableSabotages))

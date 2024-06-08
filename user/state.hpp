@@ -79,6 +79,8 @@ public:
     bool DisableVents = false;
     bool SpamReport = false;
     bool DisableMeetings = false;
+    bool AutoKick = false;
+    int KickLevel = 1;
     bool DisableSabotages = false;
     bool DisableKills = false;
     bool NoGameEnd = false;
