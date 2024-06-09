@@ -164,6 +164,7 @@ namespace PlayersTab {
 					}
 				}
 				std::string platformText = std::format("Platform: {}", platform);
+				ImGui::Text(const_cast<char*>(platformText.c_str()));
 			}
 
 			ImGui::EndChild();
